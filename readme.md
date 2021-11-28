@@ -71,7 +71,7 @@ The following characters are to be filtered out of identifiers:
 - `&`
 - `#`
 - `%`
-- `\``
+- `` ` ``
 - `+`
 - `<`
 - `=`
