@@ -561,3 +561,14 @@ By default, the background is white.
 Script interpreters are to return to the start of the file on reaching the end.
 No state such as the active speaker(s), flag(s), etc. is to be reset when this
 occurs.
+
+### Infinite loop detection
+
+Interpreters must include infinite loop detection.  They must keep a log of
+which lines have been visited since the last time either user input was
+requested or the start of the file, and the states of all flags at those times.
+
+Should a line be visited more than one time with the exact same set of flags
+set/cleared, this indicates that the script has entered an infinite loop which
+will never interact with the user again, and execution is to stop with a runtime
+error raised.
