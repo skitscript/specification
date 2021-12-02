@@ -121,6 +121,14 @@ The following is not:
 
 `Red and green`
 
+
+##### Disallowed Characters
+
+The following characters are not permitted in identifiers as they may otherwise
+be ambiguous in some contexts:
+
+- `,`
+
 ##### Elimination
 
 It is an error to give an identifier which is completely eliminated by the above
