@@ -128,6 +128,8 @@ The following characters are not permitted in identifiers as they may otherwise
 be ambiguous in some contexts:
 
 - `,`
+- `(`
+- `)`
 
 ##### Elimination
 
