@@ -102,7 +102,9 @@ ambiguous in some contexts:
 - `is`
 - `are`
 - `enters`
+- `enter`
 - `exits`
+- `exit`
 - `leads`
 - `to`
 - `set`
@@ -319,9 +321,9 @@ identifiers which normalize to the same value.
 Specify that one or more characters are play an entry animation; for example:
 
 - `Example Character Name enters Example Animation Name.`
-- `Example Character A Name and Example Character B Name enters Example Animation Name.`
-- `Example Character A Name, Example Character B Name and Example Character C Name enters Example Animation Name.`
-- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name enters Example Animation Name.`
+- `Example Character A Name and Example Character B Name enter Example Animation Name.`
+- `Example Character A Name, Example Character B Name and Example Character C Name enter Example Animation Name.`
+- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name enter Example Animation Name.`
 
 All characters referenced within the document exist at all times, but default to
 being hidden until an animation plays to bring them into view.
@@ -332,9 +334,9 @@ An emote can optionally be specified at the same time as specifying an
 animation:
 
 - `Example Character Name enters Example Animation Name, Example Emote Name.`
-- `Example Character A Name and Example Character B Name enters Example Animation Name, Example Emote Name.`
-- `Example Character A Name, Example Character B Name and Example Character C Name enters Example Animation Name, Example Emote Name.`
-- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name enters Example Animation Name, Example Emote Name.`
+- `Example Character A Name and Example Character B Name enter Example Animation Name, Example Emote Name.`
+- `Example Character A Name, Example Character B Name and Example Character C Name enter Example Animation Name, Example Emote Name.`
+- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name enter Example Animation Name, Example Emote Name.`
 
 ##### Validation
 
@@ -348,9 +350,9 @@ character identifiers which normalize to the same value.
 Specify that one or more characters are play an exit animation; for example:
 
 - `Example Character Name exits Example Animation Name.`
-- `Example Character A Name and Example Character B Name exits Example Animation Name.`
-- `Example Character A Name, Example Character B Name and Example Character C Name exits Example Animation Name.`
-- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name exits Example Animation Name.`
+- `Example Character A Name and Example Character B Name exit Example Animation Name.`
+- `Example Character A Name, Example Character B Name and Example Character C Name exit Example Animation Name.`
+- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name exit Example Animation Name.`
 
 ##### Emote
 
@@ -358,9 +360,9 @@ An emote can optionally be specified at the same time as specifying an
 animation:
 
 - `Example Character Name exits Example Animation Name, Example Emote Name.`
-- `Example Character A Name and Example Character B Name exits Example Animation Name, Example Emote Name.`
-- `Example Character A Name, Example Character B Name and Example Character C Name exits Example Animation Name, Example Emote Name.`
-- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name exits Example Animation Name, Example Emote Name.`
+- `Example Character A Name and Example Character B Name exit Example Animation Name, Example Emote Name.`
+- `Example Character A Name, Example Character B Name and Example Character C Name exit Example Animation Name, Example Emote Name.`
+- `Example Character A Name, Example Character B Name, Example Character C Name and Example Character D Name exit Example Animation Name, Example Emote Name.`
 
 ##### Validation
 
