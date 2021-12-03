@@ -100,6 +100,7 @@ ambiguous in some contexts:
 - `when`
 - `not`
 - `is`
+- `are`
 - `enters`
 - `exits`
 - `leads`
