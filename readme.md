@@ -132,6 +132,7 @@ be ambiguous in some contexts:
 - `,`
 - `(`
 - `)`
+- `~`
 
 ##### Elimination
 
