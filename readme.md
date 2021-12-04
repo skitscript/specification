@@ -124,7 +124,6 @@ The following is not:
 
 `Red and green`
 
-
 ##### Disallowed Characters
 
 The following characters are not permitted in identifiers as they may otherwise
