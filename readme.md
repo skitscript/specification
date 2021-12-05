@@ -523,6 +523,8 @@ can be dismissed as though no menu options were defined.
 
 ##### Validation
 
+###### Label presence
+
 An error is to be raised should the referenced label not exist within the
 document.  It is, however, valid for the label to follow the menu option,
 for example:
