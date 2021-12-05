@@ -40,22 +40,9 @@ Normalizes to:
 
 `anexampleidentifier`
 
-###### White Space
+###### Excluded Characters
 
-All preceding and trailing white space is trimmed.
-
-Any internal white space (spaces, tabs, etc.) and/or hyphens/minus signs (`-`)
-collapse into singlular hyphens/minus signs (`-`).  For example:
-
-`   an    example   -   identifier   `
-
-Normalizes to:
-
-`an-example-identifier`
-
-###### Filtered characters
-
-The following characters are to be filtered out of identifiers:
+The following characters are considered "excluded":
 
 - `:`
 - `!`
@@ -79,14 +66,23 @@ The following characters are to be filtered out of identifiers:
 - `|`
 - `$`
 - `.`
+- `-`
+- (space)
+- (tab)
+
+Where they occur at the start and/or end of an identifier, they are to be
+removed.
+
+Where they occur within an identifier, they are to be collapsed down to single
+hyphens/minus signs (`-`).
 
 For example:
 
-`an<example>identifier!`
+`   @*an    example<>   !-   =identifier!!   `
 
 Normalizes to:
 
-`anexampleidentifier`
+`an-example-identifier`
 
 #### Validation
 
