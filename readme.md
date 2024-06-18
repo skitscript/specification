@@ -1,8 +1,8 @@
 # Skitscript Specification [![License](https://img.shields.io/github/license/skitscript/specification.svg)](https://github.com/skitscript/specification/blob/master/license) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
-A Skitscript file (typically using the `*.skitscript` file extension) is a UTF-8
-plain-text file which reads similarly to a stage play, but describes a simple
-visual-novel-style game.
+A Skitscript file (typically using the `*.skitscript` file extension) is a
+UTF-8-encoded plain-text file which reads similarly to a stage play, but
+describes a simple visual-novel-style game.
 
 ## Reusable segments
 
