@@ -1,8 +1,78 @@
 # Skitscript Specification [![License](https://img.shields.io/github/license/skitscript/specification.svg)](https://github.com/skitscript/specification/blob/main/license) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
-A Skitscript file (typically using the `*.skitscript` file extension) is a
-UTF-8-encoded plain-text file which reads similarly to a stage play, but
-describes a simple visual-novel-style game.
+A Skitscript file (typically using the `*.skitscript` file extension) is a file
+which reads similarly to a stage play, but describes a simple visual-novel-style
+game.
+
+## Encoding
+
+Parsers handle Skitscript files as a stream of bytes which happen to be largely
+compatible with UTF-8.
+
+The following byte values are interpreted as follows:
+
+| Name                      | Byte   | Description      |
+| ------------------------- | ------ | ---------------- |
+| Whitespace                | `0x32` | Space            |
+|                           | `0x09` | Tab              |
+| Excluded from Identifiers | `0x21` | Exclamation Mark |
+|                           | `0x3F` | Question Mark    |
+|                           | `0x27` | Single Quote     |
+|                           | `0x22` | Double Quote     |
+|                           | `0x7B` | Opening Bracket  |
+|                           | `0x7D` | Closing Bracket  |
+|                           | `0x40` | At Sign          |
+|                           | `0x2F` | Forward Slash    |
+|                           | `0x23` | Hash/pound       |
+|                           | `0x25` | Percent          |
+|                           | `0x60` | Backtick         |
+|                           | `0x2B` | Plus             |
+|                           | `0x3C` | Less Than        |
+|                           | `0x3D` | Equal            |
+|                           | `0x3E` | Greater Than     |
+|                           | `0x7C` | Pipe             |
+|                           | `0x24` | Dollar           |
+|                           | `0x2E` | Period           |
+|                           | `0x2D` | Dash             |
+|                           | `0x26` | Ampersand        |
+| Letter "A" in Keywords    | `0x41` | Upper Case       |
+|                           | `0x61` | Lower Case       |
+| Letter "C" in Keywords    | `0x43` | Upper Case       |
+|                           | `0x63` | Lower Case       |
+| Letter "D" in Keywords    | `0x44` | Upper Case       |
+|                           | `0x64` | Lower Case       |
+| Letter "E" in Keywords    | `0x45` | Upper Case       |
+|                           | `0x65` | Lower Case       |
+| Letter "H" in Keywords    | `0x48` | Upper Case       |
+|                           | `0x68` | Lower Case       |
+| Letter "I" in Keywords    | `0x49` | Upper Case       |
+|                           | `0x69` | Lower Case       |
+| Letter "L" in Keywords    | `0x4C` | Upper Case       |
+|                           | `0x6C` | Lower Case       |
+| Letter "N" in Keywords    | `0x4E` | Upper Case       |
+|                           | `0x6E` | Lower Case       |
+| Letter "O" in Keywords    | `0x4F` | Upper Case       |
+|                           | `0x6F` | Lower Case       |
+| Letter "R" in Keywords    | `0x52` | Upper Case       |
+|                           | `0x72` | Lower Case       |
+| Letter "S" in Keywords    | `0x53` | Upper Case       |
+|                           | `0x73` | Lower Case       |
+| Letter "T" in Keywords    | `0x54` | Upper Case       |
+|                           | `0x74` | Lower Case       |
+| Letter "W" in Keywords    | `0x57` | Upper Case       |
+|                           | `0x77` | Lower Case       |
+| Letter "X" in Keywords    | `0x58` | Upper Case       |
+|                           | `0x78` | Lower Case       |
+| Tilde                     | `0x7E` |                  |
+| Opening Parenthesis       | `0x28` |                  |
+| Closing Parenthesis       | `0x29` |                  |
+| Period                    | `0x2E` |                  |
+| Comma                     | `0x2C` |                  |
+| Asterisk                  | `0x2A` |                  |
+| Backslash                 | `0x5C` |                  |
+| Colon                     | `0x3A` |                  |
+| Carriage Return           | `0x0D` |                  |
+| Line Feed                 | `0x0A` |                  |
 
 ## Reusable segments
 
@@ -32,7 +102,13 @@ searching the local filesystem for a background image).
 
 ###### Casing
 
-All characters are to be converted to lower case.  For example:
+The following byte ranges are replaced to perform a conversion to lower case:
+
+| Input Start (inclusive) | Input End (inclusive) | Output Start |
+| ----------------------- | --------------------- | ------------ |
+| `0x41`                  | `0x5A`                | `0x61`       |
+
+For example:
 
 `AnExampleIdentifier`
 
@@ -44,36 +120,18 @@ Normalizes to:
 
 The following characters are considered "excluded":
 
-- `!`
-- `?`
-- `'`
-- `"`
-- `{`
-- `}`
-- `@`
-- `*`
-- `/`
-- `\\`
-- `&`
-- `#`
-- `%`
-- `` ` ``
-- `+`
-- `<`
-- `=`
-- `>`
-- `|`
-- `$`
-- `.`
-- `-`
-- (space)
-- (tab)
+- Whitespace
+- Backslash
+- Backtick
+- Period
+- Asterisk
+- All other "Excluded from Identifiers".
 
 Where they occur at the start and/or end of an identifier, they are to be
 removed.
 
 Where they occur within an identifier, they are to be collapsed down to single
-hyphens/minus signs (`-`).
+dashes.
 
 For example:
 
@@ -124,11 +182,11 @@ The following is not:
 The following characters are not permitted in identifiers as they may otherwise
 be ambiguous in some contexts:
 
-- `:`
-- `,`
-- `(`
-- `)`
-- `~`
+- Colon
+- Comma
+- Opening parenthesis
+- Closing parenthesis
+- Tilde
 
 ##### Elimination
 
@@ -215,8 +273,9 @@ A warning is to be raised should any condition list a flag which is never set.
 
 ## Statements
 
-Each line (separated by CR `0x0D`, LF `0x0A` or CRLF `0x0D0A`) which contains
-non-white-space characters is to be parsed as an individual statement.
+Each line (separated by carriage return, line feed or carriage return then line
+feed) which contains non-white-space characters is to be parsed as an individual
+statement.
 
 ### Types
 
