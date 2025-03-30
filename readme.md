@@ -90,13 +90,13 @@ The following types of identifiers can exist:
 - Exit animation
 - Label
 - Flag
-- Background
+- Location
 
 #### Normalization
 
 Identifiers are to be normalized before use, either within the document (e.g.
 when searching for a label referenced by a jump) or outside it (e.g. when
-searching the local filesystem for a background image).
+searching the local filesystem for a location image).
 
 ##### Processes
 
@@ -621,11 +621,13 @@ is immediately followed by a label or the end of the file.
 
 #### Location
 
-Specify a background image; for example:
+Specifies the location that the dialog and menu options are presented within;
+for example:
 
-`Location: Example Background Name.`
+`Location: Example Location Name.`
 
-By default, the background is white.
+This usually, in practice, specifies a background image.  This should be blank
+white until a location is specified.
 
 ### End-of-file handling
 
